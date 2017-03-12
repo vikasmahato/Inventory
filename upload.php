@@ -1,20 +1,21 @@
 <?php
 session_start();
 include("includes/dbcon.php");
-$current_date = date("Y-m-d"); $current_time = date("H:i:s");
+/*$current_date = date("Y-m-d"); $current_time = date("H:i:s");
      $new = "uploads/";
 
  $sql = "INSERT INTO orders (name,address,phone,job_order,email,items,del_date,image,status,order_date,order_time,description,type,category) VALUES ('".$_POST['name']."','".$_POST['address']."','".$_POST['phone']."','".$_POST['job_order']."','".$_POST['email']."','".$_POST['items']."','".$_POST['del_date']."','".$new."',0,'".$current_date."','".$current_time."','".$_POST['description']."','".$_POST['type']."','".$_POST['category']."')";
     if(mysqli_query($con, $sql)){
         header('location: pending.php');
-    }
-/*
+    }*/
+
 $current_date = date("Y-m-d"); $current_time = date("H:i:s");
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $extension = end(explode(".", $_FILES["fileToUpload"]["name"]));
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+$path=md5($current_date.$current_time).'.'.$extension;
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -47,15 +48,15 @@ if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "uploads/".$current_date.$current_time.".".$extension)) {
-        //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "uploads/".$path)) {
+        /*echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";*/
     } else {
-        //echo "Sorry, there was an error uploading your file.";
+       /* echo "Sorry, there was an error uploading your file.";*/
     }
-    $new = "uploads/".$current_date.$current_time.".".$extension;
- $sql = "INSERT INTO orders (name,address,phone,alt_phone,email,items,del_date,image,status,order_date,order_time) VALUES ('".$_POST['name']."','".$_POST['address']."','".$_POST['phone']."','".$_POST['alt_phone']."','".$_POST['email']."','".$_POST['items']."','".$_POST['del_date']."','".$new."',0,'".$current_date."','".$current_time."')";
+    $new = "uploads/".$path;
+  $sql = "INSERT INTO orders (name,address,phone,job_order,email,items,del_date,image,status,order_date,order_time,description,type,category) VALUES ('".$_POST['name']."','".$_POST['address']."','".$_POST['phone']."','".$_POST['job_order']."','".$_POST['email']."','".$_POST['items']."','".$_POST['del_date']."','".$new."',0,'".$current_date."','".$current_time."','".$_POST['description']."','".$_POST['type']."','".$_POST['category']."')";
 //echo $sql; 
 mysqli_query($con, $sql);
 header('location: pending.php');
-}*/
+}
 ?>

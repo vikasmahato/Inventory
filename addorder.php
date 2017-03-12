@@ -93,11 +93,11 @@
                   <input type="text" name="del_date" class="form-control pull-right" id="datepicker">
                 </div>
                 </div>
-	      <!--  <div class="form-group">
+	        <div class="form-group">
 	          <label for="image1">Order Image</label>
 	          <input type="file" name="fileToUpload" id="fileToUpload">
 	          <p class="help-block">Insert the item picture here</p>
-	        </div>-->
+	        </div>
 	      </div>
 	      <!-- /.box-body -->
 	
