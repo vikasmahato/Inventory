@@ -2,10 +2,9 @@
 session_start();
 include("includes/dbcon.php");
 $current_date = date("Y-m-d"); $current_time = date("H:i:s");
-
      $new = "uploads/";
- $sql = "INSERT INTO orders (name,address,phone,job_order,email,items,del_date,image,status,order_date,order_time,description,type,category) VALUES ('".$_POST['name']."','".$_POST['address']."','".$_POST['phone']."','".$_POST['job_order']."','".$_POST['email']."','".$_POST['items']."','".$_POST['del_date']."','".$new."',0,'".$current_date."','".$current_time."','".$_POST['description'].",".$_POST['type'].",".$_POST['category']."')";
-    
+
+ $sql = "INSERT INTO orders (name,address,phone,job_order,email,items,del_date,image,status,order_date,order_time,description,type,category) VALUES ('".$_POST['name']."','".$_POST['address']."','".$_POST['phone']."','".$_POST['job_order']."','".$_POST['email']."','".$_POST['items']."','".$_POST['del_date']."','".$new."',0,'".$current_date."','".$current_time."','".$_POST['description']."','".$_POST['type']."','".$_POST['category']."')";
     if(mysqli_query($con, $sql)){
         header('location: pending.php');
     }
