@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Approved Orders
+        Dispatched Orders
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">View Approved Orders</li>
+        <li class="active">View Dispatched Orders</li>
       </ol>
     </section>
 
@@ -26,11 +26,12 @@
                   <th>Name</th>
                   <th>Delivery Date</th>
                   <th>View</th>
+                  <th>Start Billing</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                $sql = mysqli_query($con,"SELECT * FROM orders WHERE status = 1");
+                $sql = mysqli_query($con,"SELECT * FROM orders WHERE status = 2");
                 while($result = mysqli_fetch_array($sql))
                 {
                 ?>
@@ -39,6 +40,7 @@
                   <td><?php echo $result['name'] ?></td>
                   <td><?php echo $result['del_date'] ?></td>
                   <td><a class="btn btn-block btn-default" href="vieworder.php?id=<?php echo $result['id']; ?>"><i class="fa fa-eye"></i> View</a></td>
+                    <td>TODO</td>
                 </tr>
                 <?php 
                 }
@@ -50,6 +52,7 @@
                   <th>Name</th>
                   <th>Delivery Date</th>
                   <th>View</th>
+                    <th>Start Billing</th>
                 </tr>
                 </tfoot>
               </table>

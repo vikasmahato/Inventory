@@ -8,7 +8,7 @@ $item = explode(",",$result['items']);
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        View Orders
+        Add Pickups
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -24,21 +24,11 @@ $item = explode(",",$result['items']);
           <div class="box box-default">
             <div class="box-header with-border">
 	          <h3 class="box-title">
-	            Order Number <?php echo $_GET['id']; ?>
+	            Order Number <?php echo $result['job_order']; ?>
 	          </h3>
         	</div>
         <!-- /.col -->
             <div class="box-body">
-	          
-	          <blockquote>
-	          <strong>Name: </strong>
-	           <?php echo $result['name']; ?>
-	          </blockquote>
-	          
-                <blockquote>
-	          <strong>Order No:
-	            </strong><?php echo $result['job_order']; ?>
-	          </blockquote>
                 
                  <blockquote>
 	          <strong>Description:
@@ -48,11 +38,6 @@ $item = explode(",",$result['items']);
                  <blockquote>
 	          <strong>Type:
 	            </strong><?php echo $result['type']; ?>
-	          </blockquote>
-                
-                 <blockquote>
-	          <strong>Category:
-	            </strong><?php echo $result['category']; ?>
 	          </blockquote>
                 
 	          <blockquote>
@@ -100,7 +85,7 @@ $item = explode(",",$result['items']);
 		      </div>
 		    </div>
 		  </div>
-
+ <?php if ($_SESSION['name']=="finance" || $_SESSION['name']=="orders"): ?>
         <div class="col-md-6">
           <div class="box box-default">
             <div class="box-header with-border">
@@ -108,10 +93,60 @@ $item = explode(",",$result['items']);
 	            Image
 	          </h3>
         	</div>
-        	<img src = "<?php echo $result['image']; ?>" style="width:94%; margin: 3%;" >
+        	<img src = "<?php echo $result['image']; ?>" style="width:50%; margin: 3%;" >
 
 		    </div>
 		  </div>
+           <?php endif; ?>
+          
+           <?php if ($_SESSION['name']=="ops"): ?>
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+	          <h3 class="box-title">
+	            Create Challan
+	          </h3>
+        	</div>
+              <form>
+        	<p> 
+  <input type="button" value="Add Row" onClick="addRow('dataTable')" /> 
+  <input type="button" value="Remove Row" onClick="deleteRow('dataTable')" /> 
+  <p>(All acions apply only to entries with check marked check boxes only.)</p>
+</p>
+				
+<table id="dataTable" class="form" border="1">
+ <tbody>
+  <tr>
+	<p>
+	<td >
+		<input type="checkbox" name="chk[]" checked="checked" />
+	</td>
+	<td>
+	<label for="BX_NAME">From</label>
+	<input type="text" name="BX_NAME[]">
+	</td>
+	<td>
+	<label for="BX_item">Item</label>
+	<input type="text" class="small"  name="BX_item[]">
+	</td>
+	<td>
+		<label for="BX_quantity">Quantity</label>
+	<input type="text" class="small"  name="BX_quantity[]">
+	</td>
+	<td>
+	<label for="BX_price">Price</label>
+	<input type="text" class="small"  name="BX_price[]">
+	</td>
+	</p>
+  </tr>
+ </tbody>
+</table>         
+             
+</form>
+		    </div>
+		  </div>
+           <?php endif; ?>
+          
           <?php if ($_SESSION['name']=="finance"): ?>
 		  <div class="col-md-6">
 		  	<?php
@@ -130,5 +165,39 @@ $item = explode(",",$result['items']);
 
     <div class="clearfix"></div>
 </div>
+<script>
+function addRow(tableID) {
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+	if(rowCount < 5){							// limit the user from creating fields more than your limits
+		var row = table.insertRow(rowCount);
+		var colCount = table.rows[0].cells.length;
+		for(var i=0; i<colCount; i++) {
+			var newcell = row.insertCell(i);
+			newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+		}
+	}else{
+		 alert("Maximum Passenger per ticket is 5.");
+			   
+	}
+}
 
+function deleteRow(tableID) {
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+	for(var i=0; i<rowCount; i++) {
+		var row = table.rows[i];
+		var chkbox = row.cells[0].childNodes[0];
+		if(null != chkbox && true == chkbox.checked) {
+			if(rowCount <= 1) { 						// limit the user from removing all the fields
+				alert("Cannot Remove all the Passenger.");
+				break;
+			}
+			table.deleteRow(i);
+			rowCount--;
+			i--;
+		}
+	}
+}
+</script>
 <?php include("includes/footer.php"); ?>

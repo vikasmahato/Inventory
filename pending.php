@@ -37,7 +37,7 @@
                 {
                 ?>
                 <tr>
-                  <td>ORDER#<?php echo $result['id'] ?></td>
+                  <td>ORDER#<?php echo $result['job_order'] ?></td>
                   <td><?php echo $result['name'] ?></td>
                   <td><?php echo $result['del_date'] ?></td>
                   <td><a class="btn btn-block btn-default" href="editorder.php?id=<?php echo $result['id']; ?>"><i class="fa fa-edit"></i> Edit</a></td>
