@@ -11,14 +11,18 @@ include("includes/dbcon.php");
 
 $current_date = date("Y-m-d"); $current_time = date("H:i:s");
 $target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$extension = end(explode(".", $_FILES["fileToUpload"]["name"]));
 $uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-$path=md5($current_date.$current_time).'.'.$extension;
+$new1='';$new2='';$new3='';$new4='';
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    
+for($i=0; $i<count($_FILES["fileToUpload"]["name"]); $i++)
+{
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"][$i]);
+    $extension = end(explode(".", $_FILES["fileToUpload"]["name"][$i]));
+    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+    $path=md5($current_date.$current_time).'.'.$extension;
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"][$i]);
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
@@ -26,14 +30,13 @@ if(isset($_POST["submit"])) {
         echo "File is not an image.";
         $uploadOk = 0;
     }
-}
 // Check if file already exists
 if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 50000000) {
+if ($_FILES["fileToUpload"]["size"][$i] > 50000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
@@ -47,16 +50,43 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "uploads/".$path)) {
+} elseif($uploadOk == 1 && $i==0){
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], "uploads/1_".$path)) {
         /*echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";*/
     } else {
        /* echo "Sorry, there was an error uploading your file.";*/
     }
-    $new = "uploads/".$path;
-  $sql = "INSERT INTO orders (name,address,phone,job_order,email,items,del_date,image,status,order_date,order_time,description,type,category) VALUES ('".$_POST['name']."','".$_POST['address']."','".$_POST['phone']."','".$_POST['job_order']."','".$_POST['email']."','".$_POST['items']."','".$_POST['del_date']."','".$new."',0,'".$current_date."','".$current_time."','".$_POST['description']."','".$_POST['type']."','".$_POST['category']."')";
+    $new1 = "uploads/1_".$path;
+}
+    elseif($uploadOk == 1 && $i==1){
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], "uploads/2_".$path)) {
+        /*echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";*/
+    } else {
+       /* echo "Sorry, there was an error uploading your file.";*/
+    }
+    $new2 = "uploads/2_".$path;
+}
+    elseif($uploadOk == 1 && $i==2){
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], "uploads/3_".$path)) {
+        /*echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";*/
+    } else {
+       /* echo "Sorry, there was an error uploading your file.";*/
+    }
+    $new3 = "uploads/3_".$path;
+}
+    elseif($uploadOk == 1 && $i==3){
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], "uploads/4_".$path)) {
+        /*echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";*/
+    } else {
+       /* echo "Sorry, there was an error uploading your file.";*/
+    }
+    $new4 = "uploads/4_".$path;
+}
+}
+}
+    $sql = "INSERT INTO orders (job_order,work_order_image,security_letter_image,rental_payment_image,security_neg_image,status,description) VALUES ('".$_POST['job_order']."','".$new1."','".$new2."','".$new3."','".$new4."',0,'".$_POST['description']."')";
 //echo $sql; 
 mysqli_query($con, $sql);
 header('location: pending.php');
-}
+
 ?>

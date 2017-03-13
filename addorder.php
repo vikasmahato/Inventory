@@ -22,19 +22,19 @@
             <div class="box-header with-border">
 	      <form role="form" method="post" action="upload.php" enctype="multipart/form-data">
               <div class="box-body">
-              	<div class="form-group">
+              	<!--<div class="form-group">
                   <label for="name">Name</label>
                   <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
-                </div>
+                </div>-->
                   <div class="form-group">
                   <label for="job_order">Job Order No</label>
                   <input type="text" class="form-control" name="job_order" id="job_order" placeholder="Enter Job Order No">
                 </div>
                   <div class="form-group">
-                  <label for="description">Description</label>
+                  <label for="description">Remarks</label>
                   <input type="text" class="form-control" name="description" id="description" placeholder="Enter Description">
                 </div>
-                  <div class="form-group">
+                  <!--<div class="form-group">
                     <label for="type">Select Type</label>
                      <select class="form-control" id="type" name="type" required>
                       <option value="" selected disabled>Please select</option>
@@ -65,8 +65,8 @@
                   <label for="address">Items</label>
                   <textarea class="form-control" rows="5" name="items" id="items" placeholder="Enter Items"></textarea>
                   <p class="help-block">Enter Items as Item1-Quantity,Item2-Qunatity(NO SPACE IN BETWEEN)</p>
-                <!-- <label>Multiple</label>
-                <select class="form-control select2" multiple="multiple" name="items[]" data-placeholder="Select Multiple Items" style="width: 100%;">
+                 <label>Multiple</label>
+                <select class="form-control select2" multiple="multiple" name="items[]" data-placeholder="Select Multiple Items" style="width: 100%;">-->
                   <?php
                   	$sql = mysqli_query($con,"SELECT * FROM godown_inventory");
                   	while($result = mysqli_fetch_array($sql))
@@ -79,12 +79,12 @@
                   	  echo "<option id='".$result1['itemunique']."'>".$result1['itemunique']."</option>";
                   	}
                   ?>
-                </select> -->
+                </select> 
               </div>
               <div class="form-group" id="quantity1234">
                   
 	      </div>
-	      <div class="form-group">
+	      <!--<div class="form-group">
                   <label for="name">Delivery Date</label>
                   <div class="input-group date">
                   <div class="input-group-addon">
@@ -92,10 +92,25 @@
                   </div>
                   <input type="text" name="del_date" class="form-control pull-right" id="datepicker">
                 </div>
-                </div>
+                </div>-->
 	        <div class="form-group">
 	          <label for="image1">Order Image</label>
-	          <input type="file" name="fileToUpload" id="fileToUpload">
+	          <input type="file" name="fileToUpload[]" id="fileToUpload">
+	          <p class="help-block">Insert the item picture here</p>
+	        </div>
+            <div class="form-group">
+	          <label for="image1">Security Letter Image</label>
+	          <input type="file" name="fileToUpload[]" id="fileToUpload">
+	          <p class="help-block">Insert the item picture here</p>
+	        </div>
+            <div class="form-group">
+	          <label for="image1">Rental Payment Image</label>
+	          <input type="file" name="fileToUpload[]" id="fileToUpload">
+	          <p class="help-block">Insert the item picture here</p>
+	        </div>
+            <div class="form-group">
+	          <label for="image1">Security Negotiable Image</label>
+	          <input type="file" name="fileToUpload[]" id="fileToUpload">
 	          <p class="help-block">Insert the item picture here</p>
 	        </div>
 	      </div>

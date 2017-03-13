@@ -29,75 +29,19 @@ $item = explode(",",$result['items']);
         	</div>
         <!-- /.col -->
             <div class="box-body">
-	          
-	          <blockquote>
-	          <strong>Name: </strong>
-	           <?php echo $result['name']; ?>
-	          </blockquote>
-	          
+
                 <blockquote>
 	          <strong>Order No:
 	            </strong><?php echo $result['job_order']; ?>
 	          </blockquote>
                 
                  <blockquote>
-	          <strong>Description:
+	          <strong>Remarks:
 	            </strong><?php echo $result['description']; ?>
 	          </blockquote>
                 
-                 <blockquote>
-	          <strong>Type:
-	            </strong><?php echo $result['type']; ?>
-	          </blockquote>
-                
-                 <blockquote>
-	          <strong>Category:
-	            </strong><?php echo $result['category']; ?>
-	          </blockquote>
-                
-	          <blockquote>
-	          <strong>Address:
-	            </strong><?php echo $result['address']; ?>
-	          </blockquote>
-	          
-	          <blockquote>
-	          <strong>Email:
-	            </strong><?php echo $result['email']; ?>
-	          </blockquote>
-	          
-	          <blockquote>
-	          <strong>Phone:
-	            </strong><?php echo $result['phone']; ?>
-	          </blockquote>
-                
-                
-	          
         	</div>
-      <!-- Table row -->
-		      <div class="row">
-		        <div class="col-xs-12 table-responsive">
-		          <table class="table table-striped">
-		            <thead>
-		            <tr>
-		              <th>Product</th>
-		              <th>Quantity</th>
-		            </tr>
-		            </thead>
-		            <tbody>
-		           	<?php
-		           		foreach ($item as $value) {
-		           			$break = explode('-', $value); ?>
-		           			    <tr>
-					              <td><?php echo $break[0]; ?></td>
-					              <td><?php echo $break[1]; ?></td>
-					            </tr>
-		           		<?php }
-		           	?>
-		            </tbody>
-		          </table>
-		        </div>
-		        <!-- /.col -->
-		      </div>
+
 		    </div>
 		  </div>
 
@@ -105,10 +49,37 @@ $item = explode(",",$result['items']);
           <div class="box box-default">
             <div class="box-header with-border">
 	          <h3 class="box-title">
-	            Image
+	            Work Order Image
 	          </h3>
         	</div>
-        	<img src = "<?php echo $result['image']; ?>" style="width:94%; margin: 3%;" >
+        	<img src = "<?php echo $result['work_order_image']; ?>" style="width:94%; margin: 3%;" >
+
+		    </div>
+            <div class="box box-default">
+            <div class="box-header with-border">
+	          <h3 class="box-title">
+	            Security Letter Image
+	          </h3>
+        	</div>
+        	<img src = "<?php echo $result['security_letter_image']; ?>" style="width:94%; margin: 3%;" >
+
+		    </div>
+            <div class="box box-default">
+            <div class="box-header with-border">
+	          <h3 class="box-title">
+	            Rental Payment Image
+	          </h3>
+        	</div>
+        	<img src = "<?php echo $result['rental_payment_image']; ?>" style="width:94%; margin: 3%;" >
+
+		    </div>
+            <div class="box box-default">
+            <div class="box-header with-border">
+	          <h3 class="box-title">
+	            Security Negotiable Image
+	          </h3>
+        	</div>
+        	<img src = "<?php echo $result['security_neg_image']; ?>" style="width:94%; margin: 3%;" >
 
 		    </div>
 		  </div>
