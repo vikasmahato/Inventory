@@ -13,11 +13,20 @@ $count=mysqli_num_rows($result);
 // If result matched $email and $pass, table row must be 1 row
 if($count==1){
     $_SESSION['user_id']=$user_id;
-    $_SESSION['name']=$username;
-    header("Location: dashboard.php");
+    if($user_id=="orders@gmail.com"){
+     $_SESSION['name']="orders";
+         header("Location: dashboard_sales.php");
+    }elseif($user_id=="finance@gmail.com"){
+     $_SESSION['name']="finance";
+         header("Location: dashboard.php");
+    }elseif($user_id=="planning@gmail.com"){
+     $_SESSION['name']="ops";
+         header("Location: dashboard.php");
+    }
+   
+   
 }
 else {
- //$msg = "Wrong Username or Password";
  header("Location: index.php?msg=error");
 }
 ob_end_flush();

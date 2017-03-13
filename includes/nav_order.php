@@ -31,15 +31,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-          
-           <?php if ($_SESSION['name']=="orders"): ?>
-            <li class="treeview <?php if($currentPage =='addorder' ){echo 'active';}?>">
-          <a href="addorder.php">
-            <i  class="fa fa-edit"></i> <span>Add Order</span>
-          </a>
-        </li>
-          
-      <!--  <li class="treeview <?php if($currentPage =='addshopitem' || $currentPage =='addgodownitem' || $currentPage =='addorder' ){echo 'active';}?>">
+        <li class="treeview <?php if($currentPage =='addshopitem' || $currentPage =='addgodownitem' || $currentPage =='addorder' ){echo 'active';}?>">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Add New</span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -49,47 +41,28 @@
             <li class="<?php if($currentPage =='addgodownitem'){echo 'active';}?>"><a href="addgodownitem.php"><i class="fa fa-circle-o"></i> Godown Products</a></li>
             <li class="<?php if($currentPage =='addorder'){echo 'active';}?>"><a href="addorder.php"><i class="fa fa-circle-o"></i> Order</a></li>
           </ul>
+        </li>
+        <!--<li class="treeview <?php if($currentPage =='toshop' || $currentPage =='togodown'){echo 'active';}?>">
+          <a href="#">
+            <i class="fa fa-suitcase"></i> <span>Export Stock</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?php if($currentPage =='toshop'){echo 'active';}?>"><a href="finished.php"><i class="fa fa-circle-o"></i> To Shop</a></li>
+            <li class="<?php if($currentPage =='togodown'){echo 'active';}?>"><a href="pending.php"><i class="fa fa-circle-o"></i> To Godown</a></li>
+          </ul>
         </li>-->
-          
-            <?php endif; ?>
       
-     
-          
-          
-           <?php if ($_SESSION['name']=="finance"): ?>
-          
-        <li class="treeview <?php if($currentPage =='pending' || $currentPage =='finished'){echo 'active';}?>">
+       
+        <li class="treeview <?php if($currentPage =='notifications'){echo 'active';}?>">
           <a href="#">
-            <i class="fa fa-money"></i> <span>View Orders</span>
+            <i class="fa fa-gears"></i> <span>Settings</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="<?php if($currentPage =='finished'){echo 'active';}?>"><a href="finished.php"><i class="fa fa-circle-o"></i> Approved Orders</a></li>
-            <li class="<?php if($currentPage =='pending'){echo 'active';}?>"><a href="pending.php"><i class="fa fa-circle-o"></i> New Orders</a></li>
-              <li class="<?php if($currentPage =='dispatched'){echo 'active';}?>"><a href="dispatched.php"><i class="fa fa-circle-o"></i> Dispatched Orders</a></li>
+            <li class="<?php if($currentPage =='notifications'){echo 'active';}?>"><a href="notifications.php"><i class="fa fa-gear"></i> Notifications</a></li>
           </ul>
-        </li>
-          
-            <li class="treeview <?php if($currentPage =='accounts' ){echo 'active';}?>">
-          <a href="accounts.php">
-            <i class="fa fa-dashboard"></i> <span>Accounts</span>
-          </a>
-        </li>
-           <?php endif; ?>
-            
-          <!--View Items -->
-          
-            <!-- <li class="treeview <?php if($currentPage =='shop' || $currentPage =='godown'){echo 'active';}?>">
-          <a href="#">
-            <i class="fa fa-table"></i> <span>View Items</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li class="<?php if($currentPage =='shop'){echo 'active';}?>"><a href="shop.php"><i class="fa fa-circle-o"></i> Shop Inventory</a></li>
-            <li class="<?php if($currentPage =='godown'){echo 'active';}?>"><a href="godown.php"><i class="fa fa-circle-o"></i> Godown Inventory</a></li>
-              <li class="<?php if($currentPage =='location'){echo 'active';}?>"><a href="location.php"><i class="fa fa-circle-o"></i> Location Inventory</a></li>
-          </ul>
-        </li>-->
+        </li>        
       </ul>
     </section>
     <!-- /.sidebar -->
