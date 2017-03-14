@@ -84,7 +84,7 @@ if ($uploadOk == 0) {
 }
 }
 }
-    $sql = "INSERT INTO orders (job_order,work_order_image,security_letter_image,rental_payment_image,security_neg_image,status,description) VALUES ('".$_POST['job_order']."','".$new1."','".$new2."','".$new3."','".$new4."',0,'".$_POST['description']."')";
+    $sql = "INSERT INTO orders (work_order_image,security_letter_image,rental_payment_image,security_neg_image,status,description) VALUES ('".$new1."','".$new2."','".$new3."','".$new4."',0,'".$_POST['description']."')";
 //echo $sql; 
 mysqli_query($con, $sql);
 header('location: pending.php');

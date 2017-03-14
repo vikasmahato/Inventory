@@ -26,10 +26,10 @@
                   <label for="name">Name</label>
                   <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
                 </div>-->
-                  <div class="form-group">
+                 <!-- <div class="form-group">
                   <label for="job_order">Job Order No</label>
                   <input type="text" class="form-control" name="job_order" id="job_order" placeholder="Enter Job Order No">
-                </div>
+                </div>-->
                   <div class="form-group">
                   <label for="description">Remarks</label>
                   <input type="text" class="form-control" name="description" id="description" placeholder="Enter Description">
@@ -66,24 +66,11 @@
                   <textarea class="form-control" rows="5" name="items" id="items" placeholder="Enter Items"></textarea>
                   <p class="help-block">Enter Items as Item1-Quantity,Item2-Qunatity(NO SPACE IN BETWEEN)</p>
                  <label>Multiple</label>
-                <select class="form-control select2" multiple="multiple" name="items[]" data-placeholder="Select Multiple Items" style="width: 100%;">-->
-                  <?php
-                  	$sql = mysqli_query($con,"SELECT * FROM godown_inventory");
-                  	while($result = mysqli_fetch_array($sql))
-                  	{
-                  	  echo "<option id='".$result['itemunique']."'>".$result['itemunique']."</option>";
-                  	}
-                  	$sql1 = mysqli_query($con,"SELECT * FROM shop_inventory");
-                  	while($result1 = mysqli_fetch_array($sql1))
-                  	{
-                  	  echo "<option id='".$result1['itemunique']."'>".$result1['itemunique']."</option>";
-                  	}
-                  ?>
-                </select> 
+                <select class="form-control select2" multiple="multiple" name="items[]" data-placeholder="Select Multiple Items" style="width: 100%;">
+                 
+                </select> -->
               </div>
-              <div class="form-group" id="quantity1234">
-                  
-	      </div>
+             
 	      <!--<div class="form-group">
                   <label for="name">Delivery Date</label>
                   <div class="input-group date">
