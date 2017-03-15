@@ -16,9 +16,12 @@ if($count==1){
     if($user_id=="orders@gmail.com"){
      $_SESSION['name']="orders";
          header("Location: dashboard_sales.php");
-    }elseif($user_id=="finance@gmail.com"){
-     $_SESSION['name']="finance";
-         header("Location: dashboard.php");
+    }elseif($user_id=="finance_credit@gmail.com"){
+     $_SESSION['name']="finance_credit";
+         header("Location: dashboard_finance_crd.php");
+    }elseif($user_id=="finance_account@gmail.com"){
+     $_SESSION['name']="finance_account";
+         header("Location: dashboard_finance_acc.php");
     }elseif($user_id=="planning@gmail.com"){
      $_SESSION['name']="ops";
          header("Location: dashboard.php");

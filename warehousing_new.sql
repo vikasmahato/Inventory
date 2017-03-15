@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2017 at 01:01 PM
+-- Generation Time: Mar 15, 2017 at 08:51 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -58,27 +58,29 @@ CREATE TABLE `orders` (
   `security_neg_image` varchar(100) NOT NULL,
   `status` int(2) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
-  `invoice_no` varchar(30) DEFAULT NULL
+  `invoice_no` varchar(30) DEFAULT NULL,
+  `reason` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `job_order`, `work_order_image`, `security_letter_image`, `rental_payment_image`, `security_neg_image`, `status`, `description`, `invoice_no`) VALUES
-(2, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 0, 'This is a description', NULL),
-(3, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 0, 'This is a description', NULL),
-(4, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 0, 'Description', NULL),
-(5, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 1, 'This is a description', NULL),
-(6, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 1, 'This is a description', NULL),
-(7, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 1, 'Description', NULL),
-(8, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 2, 'This is a description', NULL),
-(9, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 2, 'This is a description', NULL),
-(10, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 2, 'Description', NULL),
-(11, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 3, 'This is a description', 'WEB12345'),
-(12, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 3, 'This is a description', 'WEB12346'),
-(13, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 3, 'Description', 'WEB12347'),
-(14, '1232sedr', 'uploads/1_4caf2a47b36b22d4165f43eff43f6fc0.jpg', 'uploads/2_4caf2a47b36b22d4165f43eff43f6fc0.jpg', 'uploads/3_4caf2a47b36b22d4165f43eff43f6fc0.jpg', 'uploads/4_4caf2a47b36b22d4165f43eff43f6fc0.png', 0, 'remarks', NULL);
+INSERT INTO `orders` (`id`, `job_order`, `work_order_image`, `security_letter_image`, `rental_payment_image`, `security_neg_image`, `status`, `description`, `invoice_no`, `reason`) VALUES
+(2, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 0, 'This is a description', NULL, ''),
+(3, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 0, 'This is a description', NULL, ''),
+(4, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 0, 'Description', NULL, ''),
+(5, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 1, 'This is a description', NULL, ''),
+(6, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 1, 'This is a description', NULL, ''),
+(7, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 1, 'Description', NULL, ''),
+(8, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 2, 'This is a description', NULL, ''),
+(9, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 2, 'This is a description', NULL, ''),
+(10, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 2, 'Description', NULL, ''),
+(11, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 3, 'This is a description', 'WEB12345', ''),
+(12, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 3, 'This is a description', 'WEB12346', ''),
+(13, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 3, 'Description', 'WEB12347', ''),
+(14, '231', 'uploads/1_4caf2a47b36b22d4165f43eff43f6fc0.jpg', 'uploads/2_4caf2a47b36b22d4165f43eff43f6fc0.jpg', 'uploads/3_4caf2a47b36b22d4165f43eff43f6fc0.jpg', 'uploads/4_4caf2a47b36b22d4165f43eff43f6fc0.png', 0, 'remarks', NULL, ''),
+(15, 'dont wanna', 'uploads/1_327db1e8909e09e1d1638706a8e05496.jpg', 'uploads/2_327db1e8909e09e1d1638706a8e05496.jpg', 'uploads/3_327db1e8909e09e1d1638706a8e05496.jpg', 'uploads/4_327db1e8909e09e1d1638706a8e05496.jpg', -1, 'trial', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -118,12 +120,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `name`) VALUES
-('vikas', '123456', ''),
-('vikasmahato0@gmail.com', '123456', ''),
+('finance_account@gmail.com', '123456', ''),
+('finance_credit@gmail.com', '123456', 'finance'),
+('marketing@gmail.com', '123456', 'marketing'),
 ('orders@gmail.com', '123456', 'orders'),
-('finance@gmail.com', '123456', 'finance'),
 ('planning@gmail.com', '123456', 'planning'),
-('marketing@gmail.com', '123456', 'marketing');
+('vikas', '123456', ''),
+('vikasmahato0@gmail.com', '123456', '');
 
 --
 -- Indexes for dumped tables
@@ -136,6 +139,12 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`username`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -143,7 +152,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
