@@ -48,6 +48,17 @@ $currentPage = $getpage[0];
       display: block;
       z-index: 1;
     }
+    .modal-body .form-horizontal .col-sm-2,
+    .modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+    .modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+    .modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
 </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
