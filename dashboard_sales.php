@@ -58,10 +58,20 @@
                 {
                 ?>
                 <tr>
-                       <td><?php if($result['status'] == 1) { ?><span class="label label-success">Completed</span><?php } else { ?><span class="label label-warning">Pending</span><?php } ?></td>  
+                       <td>
+                           <?php if($result['status'] == 1) { ?>
+                           <span class="label label-info">Planning</span>
+                           <?php } elseif($result['status'] == -1) { ?>
+                           <span class="label label-danger">Rejected</span>
+                           <?php } elseif($result['status'] == 0) {?>
+                            <span class="label label-default">FC Pending</span>
+                           <?php } ?>
+                    </td>  
+                    
+                    
                   <td><?php echo $result['description'] ?></td>
                      <td><?php echo $result['job_order'] ?></td>
-                  <td><?php echo $result['items'] ?></td>
+                <td><a class="btn btn-block btn-default" href="vieworder.php?id=<?php echo $result['id']; ?>"><i class="fa fa-eye"></i> View</a></td>
                 </tr>
                 <?php 
                 }

@@ -24,7 +24,10 @@ if($count==1){
          header("Location: dashboard_finance_acc.php");
     }elseif($user_id=="planning@gmail.com"){
      $_SESSION['name']="ops";
-         header("Location: dashboard.php");
+         header("Location: dashboard_planning.php");
+    }elseif($user_id=="dispatch@gmail.com"){
+     $_SESSION['name']="dispatch";
+         header("Location: dashboard_dispatch.php");
     }
    
    

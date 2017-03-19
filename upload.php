@@ -1,13 +1,6 @@
 <?php
 session_start();
 include("includes/dbcon.php");
-/*$current_date = date("Y-m-d"); $current_time = date("H:i:s");
-     $new = "uploads/";
-
- $sql = "INSERT INTO orders (name,address,phone,job_order,email,items,del_date,image,status,order_date,order_time,description,type,category) VALUES ('".$_POST['name']."','".$_POST['address']."','".$_POST['phone']."','".$_POST['job_order']."','".$_POST['email']."','".$_POST['items']."','".$_POST['del_date']."','".$new."',0,'".$current_date."','".$current_time."','".$_POST['description']."','".$_POST['type']."','".$_POST['category']."')";
-    if(mysqli_query($con, $sql)){
-        header('location: pending.php');
-    }*/
 
 $current_date = date("Y-m-d"); $current_time = date("H:i:s");
 $target_dir = "uploads/";
@@ -84,9 +77,9 @@ if ($uploadOk == 0) {
 }
 }
 }
-    $sql = "INSERT INTO orders (job_order,work_order_image,security_letter_image,rental_payment_image,security_neg_image,status,description) VALUES ('".$_POST['job_order']."','".$new1."','".$new2."','".$new3."','".$new4."',0,'".$_POST['description']."')";
+    $sql = "INSERT INTO orders (work_order_image,security_letter_image,rental_payment_image,security_neg_image,status,description,billing_add,mailing_add,delivery_add,phone,name,email,date) VALUES ('".$new1."','".$new2."','".$new3."','".$new4."',0,'".$_POST['description']."','".$_POST['billing_address']."','".$_POST['mailing_address']."','".$_POST['delivery_address']."','".$_POST['phone']."','".$_POST['name']."','".$_POST['email']."','".$_POST['del_date']."')";
 //echo $sql; 
 mysqli_query($con, $sql);
-header('location: pending.php');
+header('location: dashboard_sales.php');
 
 ?>
