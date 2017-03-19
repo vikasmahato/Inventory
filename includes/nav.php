@@ -38,19 +38,6 @@
             <i  class="fa fa-edit"></i> <span>Add Order</span>
           </a>
         </li>
-          
-      <!--  <li class="treeview <?php if($currentPage =='addshopitem' || $currentPage =='addgodownitem' || $currentPage =='addorder' ){echo 'active';}?>">
-          <a href="#">
-            <i class="fa fa-edit"></i> <span>Add New</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li class="<?php if($currentPage =='addshopitem'){echo 'active';}?>"><a href="addshopitem.php"><i class="fa fa-circle-o"></i> Shop Products</a></li>
-            <li class="<?php if($currentPage =='addgodownitem'){echo 'active';}?>"><a href="addgodownitem.php"><i class="fa fa-circle-o"></i> Godown Products</a></li>
-            <li class="<?php if($currentPage =='addorder'){echo 'active';}?>"><a href="addorder.php"><i class="fa fa-circle-o"></i> Order</a></li>
-          </ul>
-        </li>-->
-          
             <?php endif; ?>
       
      
@@ -77,19 +64,13 @@
         </li>
            <?php endif; ?>
             
-          <!--View Items -->
-          
-            <!-- <li class="treeview <?php if($currentPage =='shop' || $currentPage =='godown'){echo 'active';}?>">
-          <a href="#">
-            <i class="fa fa-table"></i> <span>View Items</span>
-            <i class="fa fa-angle-left pull-right"></i>
+             <li class="treeview <?php if($currentPage =='logout' ){echo 'active';}?>">
+          <a href="logout.php">
+            <i  class="fa fa-back"></i> <span>Logout</span>
           </a>
-          <ul class="treeview-menu">
-            <li class="<?php if($currentPage =='shop'){echo 'active';}?>"><a href="shop.php"><i class="fa fa-circle-o"></i> Shop Inventory</a></li>
-            <li class="<?php if($currentPage =='godown'){echo 'active';}?>"><a href="godown.php"><i class="fa fa-circle-o"></i> Godown Inventory</a></li>
-              <li class="<?php if($currentPage =='location'){echo 'active';}?>"><a href="location.php"><i class="fa fa-circle-o"></i> Location Inventory</a></li>
-          </ul>
-        </li>-->
+        </li>
+          
+       
       </ul>
     </section>
     <!-- /.sidebar -->

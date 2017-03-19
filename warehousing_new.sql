@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.6.6
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 15, 2017 at 08:51 AM
--- Server version: 10.1.21-MariaDB
+-- Host: localhost:3306
+-- Generation Time: Mar 19, 2017 at 01:17 AM
+-- Server version: 5.6.35
 -- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,6 +19,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `warehousing`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `challan_items`
+--
+
+CREATE TABLE `challan_items` (
+  `id` int(4) DEFAULT NULL,
+  `challan_id` varchar(20) DEFAULT NULL,
+  `item_code` varchar(20) DEFAULT NULL,
+  `item_description` varchar(100) DEFAULT NULL,
+  `item_quantity` int(5) DEFAULT NULL,
+  `app_price` varchar(10) DEFAULT NULL,
+  `total_price` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `challan_items`
+--
+
+INSERT INTO `challan_items` (`id`, `challan_id`, `item_code`, `item_description`, `item_quantity`, `app_price`, `total_price`) VALUES
+(0, '', '', '', 0, '', ''),
+(0, '', '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -59,28 +83,26 @@ CREATE TABLE `orders` (
   `status` int(2) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
   `invoice_no` varchar(30) DEFAULT NULL,
-  `reason` varchar(200) NOT NULL
+  `reason` varchar(200) NOT NULL,
+  `billing_add` varchar(100) DEFAULT NULL,
+  `mailing_add` varchar(100) DEFAULT NULL,
+  `delivery_add` varchar(100) DEFAULT NULL,
+  `phone` varchar(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `date` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `job_order`, `work_order_image`, `security_letter_image`, `rental_payment_image`, `security_neg_image`, `status`, `description`, `invoice_no`, `reason`) VALUES
-(2, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 0, 'This is a description', NULL, ''),
-(3, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 0, 'This is a description', NULL, ''),
-(4, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 0, 'Description', NULL, ''),
-(5, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 1, 'This is a description', NULL, ''),
-(6, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 1, 'This is a description', NULL, ''),
-(7, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 1, 'Description', NULL, ''),
-(8, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 2, 'This is a description', NULL, ''),
-(9, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 2, 'This is a description', NULL, ''),
-(10, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 2, 'Description', NULL, ''),
-(11, '123456', 'uploads/32d76a271c4c4ec02e7e87c8a9281e66.png', '', '', '', 3, 'This is a description', 'WEB12345', ''),
-(12, '123456', 'uploads/2b528c31ec6975879b7df5d9cb9c802d.png', '', '', '', 3, 'This is a description', 'WEB12346', ''),
-(13, '123456', 'uploads/df559ba2abd4f4bb15523d459877a6f2.png', '', '', '', 3, 'Description', 'WEB12347', ''),
-(14, '231', 'uploads/1_4caf2a47b36b22d4165f43eff43f6fc0.jpg', 'uploads/2_4caf2a47b36b22d4165f43eff43f6fc0.jpg', 'uploads/3_4caf2a47b36b22d4165f43eff43f6fc0.jpg', 'uploads/4_4caf2a47b36b22d4165f43eff43f6fc0.png', 0, 'remarks', NULL, ''),
-(15, 'dont wanna', 'uploads/1_327db1e8909e09e1d1638706a8e05496.jpg', 'uploads/2_327db1e8909e09e1d1638706a8e05496.jpg', 'uploads/3_327db1e8909e09e1d1638706a8e05496.jpg', 'uploads/4_327db1e8909e09e1d1638706a8e05496.jpg', -1, 'trial', NULL, '');
+INSERT INTO `orders` (`id`, `job_order`, `work_order_image`, `security_letter_image`, `rental_payment_image`, `security_neg_image`, `status`, `description`, `invoice_no`, `reason`, `billing_add`, `mailing_add`, `delivery_add`, `phone`, `name`, `email`, `date`) VALUES
+(16, 'P101110', 'uploads/1_b4badd29aa78b93ba607c7085cf6dcf5.jpg', 'uploads/2_b4badd29aa78b93ba607c7085cf6dcf5.jpg', 'uploads/3_b4badd29aa78b93ba607c7085cf6dcf5.jpg', 'uploads/4_b4badd29aa78b93ba607c7085cf6dcf5.jpg', 1, 'Bluestar vr mall 6nos x 4 nos', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '12/02/2017'),
+(17, 'P101110', 'uploads/1_d04410fd5795c636606318011cca3029.jpg', 'uploads/2_d04410fd5795c636606318011cca3029.jpg', 'uploads/3_d04410fd5795c636606318011cca3029.jpg', 'uploads/4_d04410fd5795c636606318011cca3029.jpg', 0, 'L n T Scaffolds 5 sets', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '23/03/2017'),
+(18, 'P1562', 'uploads/1_1c6f033f350c8819797c0e134f213498.png', 'uploads/2_1c6f033f350c8819797c0e134f213498.png', 'uploads/3_1c6f033f350c8819797c0e134f213498.png', 'uploads/4_1c6f033f350c8819797c0e134f213498.png', 0, 'HoneyWell', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '05/04/2017'),
+(19, 'JN4589', 'uploads/1_1ab9b5eba63cd6d8df5662f18c98845d.png', 'uploads/2_1ab9b5eba63cd6d8df5662f18c98845d.png', 'uploads/3_1ab9b5eba63cd6d8df5662f18c98845d.png', 'uploads/4_1ab9b5eba63cd6d8df5662f18c98845d.png', 0, 'Air India', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '23/25/2016'),
+(20, 'HI5498', 'uploads/1_252f660eb2bfebe9dd922b5a965a44d3.png', 'uploads/2_252f660eb2bfebe9dd922b5a965a44d3.png', 'uploads/3_252f660eb2bfebe9dd922b5a965a44d3.png', 'uploads/4_252f660eb2bfebe9dd922b5a965a44d3.png', 0, 'DTU maintainence', NULL, '', 'DTU shahbad daulatpur opposite futurepoint', 'DTU shahbad daulatpur', 'DTU shahbad daulatpur', '9876543210', 'VC', 'dtu@gov.in', '23/03/2017');
 
 -- --------------------------------------------------------
 
@@ -120,6 +142,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `name`) VALUES
+('dispatch@gmail.com', '123456', 'dispatch'),
 ('finance_account@gmail.com', '123456', ''),
 ('finance_credit@gmail.com', '123456', 'finance'),
 ('marketing@gmail.com', '123456', 'marketing'),
@@ -152,7 +175,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

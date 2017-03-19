@@ -39,6 +39,34 @@ $item = explode(",",$result['items']);
 	          <strong>Remarks:
 	            </strong><?php echo $result['description']; ?>
 	          </blockquote>
+                 <blockquote>
+	          <strong>Mailing Address:
+	            </strong><?php echo $result['mailing_add']; ?>
+	          </blockquote>
+                 <blockquote>
+	          <strong>Billing Address:
+	            </strong><?php echo $result['billing_add']; ?>
+	          </blockquote>
+                 <blockquote>
+	          <strong>Delivery Address:
+	            </strong><?php echo $result['delivery_add']; ?>
+	          </blockquote>
+                 <blockquote>
+	          <strong>Name:
+	            </strong><?php echo $result['name']; ?>
+	          </blockquote>
+                 <blockquote>
+	          <strong>Email:
+	            </strong><?php echo $result['email']; ?>
+	          </blockquote>
+                <blockquote>
+	          <strong>Phone:
+	            </strong><?php echo $result['phone']; ?>
+	          </blockquote>
+                <blockquote>
+	          <strong>Delivery Date:
+	            </strong><?php echo $result['date']; ?>
+	          </blockquote>
                 
         	</div>
 
