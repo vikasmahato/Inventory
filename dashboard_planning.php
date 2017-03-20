@@ -39,6 +39,7 @@
                   <th>Job Order</th>
                   <th>Date of Delivery/Pickup</th>
                   <th>Attachments</th>
+                  <th>Print</th>
                   <th>Documents</th>
                 </tr>
                 </thead>
@@ -53,6 +54,7 @@
                  <td><?php echo $result['job_order'] ?></td>
                  <td><?php echo $result['date'] ?></td>
                  <td><a class="btn btn-block btn-default" href="vieworder.php?id=<?php echo $result['id']; ?>"><i class="fa fa-eye"></i> View</a></td>
+                 <td><form action="createpdf.php?id=<?php echo $result['id']; ?>" method="post"><button class="btn btn-block btn-default" type="submit" name="formpdf_btn"><i class="fa fa-print"></i> Print</button></form></td>
                 <td><a class="btn btn-block btn-default" href="addChallan.php?id=<?php echo $result['id']; ?>"><i class="fa fa-edit"></i> Add Challan</a>
                     <a class="btn btn-block btn-default" href="addForm.php?id=<?php echo $result['id']; ?>"><i class="fa fa-edit"></i> Add Form</a></td>
                 </tr>

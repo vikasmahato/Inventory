@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 19, 2017 at 01:17 AM
--- Server version: 5.6.35
+-- Host: 127.0.0.1
+-- Generation Time: Mar 19, 2017 at 05:58 PM
+-- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `challan_items` (
   `id` int(4) DEFAULT NULL,
-  `challan_id` varchar(20) DEFAULT NULL,
+  `challan_id` varchar(50) DEFAULT NULL,
   `item_code` varchar(20) DEFAULT NULL,
   `item_description` varchar(100) DEFAULT NULL,
   `item_quantity` int(5) DEFAULT NULL,
@@ -42,7 +42,11 @@ CREATE TABLE `challan_items` (
 
 INSERT INTO `challan_items` (`id`, `challan_id`, `item_code`, `item_description`, `item_quantity`, `app_price`, `total_price`) VALUES
 (0, '', '', '', 0, '', ''),
-(0, '', '', '', 0, '', '');
+(0, '', '', '', 0, '', ''),
+(NULL, NULL, '123es', 'try', 45, '54', '54'),
+(NULL, NULL, '321es', 'yrt', 54, '45', '45'),
+(NULL, '1489942683', 'itq1', 'trial', 56, '65', '65'),
+(NULL, '1489942683', 'itq2', 'liart', 65, '56', '56');
 
 -- --------------------------------------------------------
 
@@ -103,6 +107,18 @@ INSERT INTO `orders` (`id`, `job_order`, `work_order_image`, `security_letter_im
 (18, 'P1562', 'uploads/1_1c6f033f350c8819797c0e134f213498.png', 'uploads/2_1c6f033f350c8819797c0e134f213498.png', 'uploads/3_1c6f033f350c8819797c0e134f213498.png', 'uploads/4_1c6f033f350c8819797c0e134f213498.png', 0, 'HoneyWell', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '05/04/2017'),
 (19, 'JN4589', 'uploads/1_1ab9b5eba63cd6d8df5662f18c98845d.png', 'uploads/2_1ab9b5eba63cd6d8df5662f18c98845d.png', 'uploads/3_1ab9b5eba63cd6d8df5662f18c98845d.png', 'uploads/4_1ab9b5eba63cd6d8df5662f18c98845d.png', 0, 'Air India', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, '23/25/2016'),
 (20, 'HI5498', 'uploads/1_252f660eb2bfebe9dd922b5a965a44d3.png', 'uploads/2_252f660eb2bfebe9dd922b5a965a44d3.png', 'uploads/3_252f660eb2bfebe9dd922b5a965a44d3.png', 'uploads/4_252f660eb2bfebe9dd922b5a965a44d3.png', 0, 'DTU maintainence', NULL, '', 'DTU shahbad daulatpur opposite futurepoint', 'DTU shahbad daulatpur', 'DTU shahbad daulatpur', '9876543210', 'VC', 'dtu@gov.in', '23/03/2017');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_challan`
+--
+
+CREATE TABLE `order_challan` (
+  `job_order` varchar(20) NOT NULL,
+  `id` varchar(20) NOT NULL,
+  `challan_id` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
