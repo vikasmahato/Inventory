@@ -64,6 +64,14 @@
         </li>
            <?php endif; ?>
             
+          
+             <li class="treeview <?php if($currentPage =='inventory' ){echo 'active';}?>">
+          <a href="inventory.php">
+            <i  class="fa fa-edit"></i> <span>Inventory</span>
+          </a>
+        </li>
+          
+          
              <li class="treeview <?php if($currentPage =='logout' ){echo 'active';}?>">
           <a href="logout.php">
             <i  class="fa fa-back"></i> <span>Logout</span>
