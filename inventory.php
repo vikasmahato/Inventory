@@ -62,13 +62,50 @@
           <!-- TABLE: LATEST ORDERS -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">New Challan</h3>
+              <h3 class="box-title">Get Inventory Info at Location</h3>
             </div>
             <!-- /.box-header -->
             
              
               <div class="box-body">
-                
+                  <div id="from_div">
+                <form method="post" action="showItems.php">
+                    <div class="form-group">
+                   <label  class="col-sm-2 control-label"
+                              for="location">Select Location</label>
+                            <div class="col-sm-10">
+                   <select class="custom-select form-control" name="location" id="location">
+                         <option value="" selected disabled>Please select</option>
+                       <?php
+                       $location = mysqli_query($con, "SELECT location_id, location_name FROM table_location");
+		           		foreach ($location as $row) { ?>
+                       <option value="<?php echo $row['location_id'] ?>"><?php echo $row['location_name'] ?></option>
+                       <?php }	?>
+                       
+                    </select>
+                           </div>
+                </div>
+                  
+                    <button class="btn btn-success addmore" type="submit" name="location_query">Query</button>
+                    
+                     <div class="form-group">
+                   <label  class="col-sm-2 control-label"
+                              for="job_order">Select Job Order No</label>
+                            <div class="col-sm-10">
+                   <select class="custom-select form-control" name="job_order" id="job_order">
+                         <option value="" selected disabled>Please select</option>
+                       <?php
+                       $job_orders = mysqli_query($con, "SELECT job_order FROM orders");
+		           		foreach ($job_orders as $row) { ?>
+                       <option value="<?php echo $row['job_order'] ?>"><?php echo $row['job_order'] ?></option>
+                       <?php }	?>
+                       
+                    </select>
+                           </div>
+                </div>
+                    <button class="btn btn-success addmore" type="submit" name="job_order_query">Query</button>
+                    </div>
+                 </form> 
                   
             </div>
              
