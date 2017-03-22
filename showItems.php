@@ -3,23 +3,22 @@
 
 $location_id = "";
 $job_order_no = "";
-
-if(isset($_POST['location_query'])){
-    $location_id = $_POST['location_query'];
-    
-    $order_query = mysqli_query($con, "SELECT * FROM orders LIMIT 10");
-    
-}
-elseif(isset($_POST['job_order'])){
-    $job_order_no = $_POST['job_order']
-        $order_query = mysqli_query($con, "SELECT * FROM orders LIMIT 10");
-}
+$order_query;
 ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
+          <?php if(isset($_POST['location_query'])){
+    $sql = "SELECT * FROM location_item_relation WHERE location_id ='".$_POST['location']."'";
+    echo $sql;
+  $orders = mysqli_query($con, $sql );
+    
+}elseif(isset($_POST['job_order_query'])){
+     $sql = "SELECT * FROM location_item_relation WHERE location_id ='".$_POST['job_order']."'";
+    echo $sql;
+}?>
         Items at Location/ Job Order
       </h1>
       <ol class="breadcrumb">
@@ -46,20 +45,22 @@ elseif(isset($_POST['job_order'])){
                 <table class="table no-margin">
                   <thead>
                   <tr>
-                    <th>Order ID</th>
+                  
                     <th>Item Code</th>
                       <th>Item Name</th>
+                        <th>Quantity</th>
                   </tr>
                   </thead>
                   <tbody>
-                  	<?php 
+                  <?php 
                   	
-                  	while($orders=mysqli_fetch_array($order_query))
+                  foreach ($orders as $value) 
                   	{ ?>
 	                  <tr>
-	                  <td><?php echo $location_id; ?></td>
-	                    <td><?php echo $orders['items']; ?></td>
-	                     <td><?php echo $orders['items']; ?></td>                 
+	                 
+	                    <td><?php echo $value['location_id']; ?></td>
+	                     <td><?php echo $value['item_id']; ?></td>
+                           <td><?php echo $value['quantity']; ?></td>
 	                  </tr>
 	              	<?php } ?>
                   </tbody>
