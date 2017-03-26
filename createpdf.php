@@ -12,9 +12,14 @@ $name ="";
 $value = array();
 
             
-            $id = $_GET['id'];
+            $order = $_GET['id'];
+            $challan_id = $_POST['challan_id'];
 
-        $sql = "SELECT * FROM orders WHERE id = $id";
+echo $order." ".$challan_id;
+
+generate( $order, $challan_id);
+
+ /*       $sql = "SELECT * FROM orders WHERE id = $id";
             
    
        foreach ($con->query($sql) as $row) {
@@ -24,17 +29,19 @@ $value = array();
             if (isset($_POST['formpdf_btn'])){generate($value, '1');}
            
 }
-
-function generate($value, $s){
+*/
+function generate( $order, $challan_id ){
+    
+    echo $order." ".$challan_id;
 
  require 'demo.php';
 ini_set('display_errors', 1);
 
     $dompdf = new DOMPDF();
-	$dompdf->load_html(${'form'.$s});
+	$dompdf->load_html(${'form1'});
     	$dompdf->setPaper('A4', 'portrait');
 	$dompdf->render();
-$dompdf->stream("file".$s.".pdf");
+$dompdf->stream("file1.pdf");
    
 }
 

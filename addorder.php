@@ -26,23 +26,58 @@
                   <label for="description">Remarks</label>
                   <input type="text" class="form-control" name="description" id="description" placeholder="Enter Description">
                 </div>                
-                <div class="form-group">
-                  <label for="address">Mailing Address</label>
-                  <textarea class="form-control" rows="3" name="mailing_address" id="mailing_address" placeholder="Enter Address"></textarea>
+               
+                   <div class="form-group">
+                   <label for="mailing_address">Mailing Address</label>                         
+                   <select class="custom-select form-control" name="mailing_address" id="mailing_address">
+                         <option value="" selected disabled>Please select</option>
+                       <?php
+                       $location = mysqli_query($con, "SELECT location_id, location_name FROM table_location");
+		           		foreach ($location as $row) { ?>
+                       <option value="<?php echo $row['location_id'] ?>"><?php echo $row['location_name'] ?></option>
+                       <?php }	?>
+                       
+                    </select>
+                          
                 </div>
-                <div class="form-group">
-                  <label for="address">Billing Address</label>
-                  <textarea class="form-control" rows="3" name="billing_address" id="billing_address" placeholder="Enter Address"></textarea>
+                    <div class="form-group">
+                   <label for="billing_address">Billing Address</label>
+                         
+                   <select class="custom-select form-control" name="billing_address" id="billing_address">
+                         <option value="" selected disabled>Please select</option>
+                       <?php
+                       $location = mysqli_query($con, "SELECT location_id, location_name FROM table_location");
+		           		foreach ($location as $row) { ?>
+                       <option value="<?php echo $row['location_id'] ?>"><?php echo $row['location_name'] ?></option>
+                       <?php }	?>
+                       
+                    </select>
+                          
                 </div>
                   <div class="form-group">
                   <label for="name">Name</label>
                   <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
                 </div>
-                <div class="form-group">
+             <div class="form-group">
+                   <label for="delivery_address">Delivery Address</label>
+                         
+                   <select class="custom-select form-control" name="delivery_address" id="delivery_address">
+                         <option value="" selected disabled>Please select</option>
+                       <?php
+                       $location = mysqli_query($con, "SELECT location_id, location_name FROM table_location");
+		           		foreach ($location as $row) { ?>
+                       <option value="<?php echo $row['location_id'] ?>"><?php echo $row['location_name'] ?></option>
+                       <?php }	?>
+                       
+                    </select>
+                          
+                </div>
+                  
+            <!--    <div class="form-group">
                   <label for="address">Delivery Address</label>
                   <textarea class="form-control" rows="3" name="delivery_address" id="delivery_address" placeholder="Enter Address"></textarea>
-                </div>
-                <div class="form-group">
+                </div>-->
+              <!--  <div class="form-group">
                   <label for="phone">Phone</label>
                   <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number">
                 </div>
@@ -50,7 +85,9 @@
                 <div class="form-group">
                   <label for="email">Email address</label>
                   <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
-                </div>
+                </div>-->
+                   <input type="hidden" class="form-control" name="phone" id="phone" value="0">
+                  <input type="hidden" class="form-control" name="email" id="email" value="example@email.com">
 	      <div class="form-group">
                   <label for="name">Delivery Date</label>
                   <div class="input-group date">
