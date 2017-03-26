@@ -135,7 +135,7 @@ alert("hello");
     <td><input type="text" name="item_description[]" id="item_description" placeholder="Description"></td>
     <td><input type="text" name="item_quantity[]" id="item_quantity" placeholder="Quantity"></td>
        <td><input type="text" name="app_price[]" placeholder="Approx Unit Price"></td>
-        <td><input type="text" name="total_price[]" placeholder="Total Price"></td>
+        <td><input type="number" name="total_price[]" placeholder="Total Price"></td>
    </tr>
           </tbody>
   </table>

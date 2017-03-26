@@ -32,7 +32,7 @@ if(isset($_POST['submit_row']))
           
         $update_from = "UPDATE `location_item_relation` SET  `quantity`=quantity- $item_quantity[$i] WHERE `location_id`='$location_from' AND `item_id`='$item_code[$i]'";
       
-      $update_challan_relation = "INSERT INTO `challan_item_relation`(`challan_id`, `item_id`, `quantity`, `job_order`) VALUES ('$challan_id','$item_code[$i]', $item_quantity[$i], '$job_order')";
+      $update_challan_relation = "INSERT INTO `challan_item_relation`(`challan_id`, `item_id`, `job_order`, `quantity`, `description`, `total_price`) VALUES ('$challan_id','$item_code[$i]','$job_order',$item_quantity[$i],'$item_description[$i]',$total_price[$i])";
       
       $sql = "SELECT * FROM `location_item_relation` WHERE `location_id`='$location_to' AND `item_id`='$item_code[$i]' ";
       
