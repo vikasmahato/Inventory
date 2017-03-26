@@ -47,6 +47,7 @@ if(mysqli_num_rows($sql1)==0){
           if(mysqli_query($con, $update_challan_relation)){
               echo "sucess";
           }
+             
           }
      }
 } else {
