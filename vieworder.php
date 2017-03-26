@@ -2,7 +2,8 @@
 <?php 
 $sql = mysqli_query($con, "SELECT * FROM orders WHERE id = '".$_GET['id']."'");
 $result = mysqli_fetch_array($sql);
-$item = explode(",",$result['items']);
+$location = mysqli_query($con, "SELECT * FROM table_location WHERE location_id = '".$result['delivery_add']."'");
+$location_result = mysqli_fetch_array($location);
 ?>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -41,27 +42,27 @@ $item = explode(",",$result['items']);
 	          </blockquote>
                  <blockquote>
 	          <strong>Mailing Address:
-	            </strong><?php echo $result['mailing_add']; ?>
+	            </strong><?php echo $location_result['address']; ?>
 	          </blockquote>
                  <blockquote>
 	          <strong>Billing Address:
-	            </strong><?php echo $result['billing_add']; ?>
+	            </strong><?php echo $location_result['address']; ?>
 	          </blockquote>
                  <blockquote>
 	          <strong>Delivery Address:
-	            </strong><?php echo $result['delivery_add']; ?>
+	            </strong><?php echo $location_result['address']; ?>
 	          </blockquote>
                  <blockquote>
 	          <strong>Name:
-	            </strong><?php echo $result['name']; ?>
+	            </strong><?php echo $location_result['name']; ?>
 	          </blockquote>
                  <blockquote>
 	          <strong>Email:
-	            </strong><?php echo $result['email']; ?>
+	            </strong><?php echo $location_result['email']; ?>
 	          </blockquote>
                 <blockquote>
 	          <strong>Phone:
-	            </strong><?php echo $result['phone']; ?>
+	            </strong><?php echo $location_result['mobile']; ?>
 	          </blockquote>
                 <blockquote>
 	          <strong>Delivery Date:

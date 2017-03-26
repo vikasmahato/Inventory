@@ -3,10 +3,14 @@
 error_reporting(E_ALL); ini_set('display_errors', 1);
 $location_from = $_POST['pickup_location'];
 $location_to = $_POST['delivery_location'];
-//$job_order = "";//$_POST[];
+$job_order = $_POST['job_order'];
 $challan_type = $_POST['challan_type'];
 
-$items = mysqli_query($con, "SELECT * FROM location_item_relation WHERE location_id ='".$location_from."'" );
+$items = mysqli_query($con, "SELECT * FROM location_item_relation WHERE location_id =".$location_from."" );
+
+//$items = mysqli_query($con, "SELECT table_item.name, table_item.item_code, location_item_relation.quantity FROM location_item_relation INNER JOIN table_item ON location_item_relation.item_id = table_item.item_code WHERE location_item_relation.location_id = 1 " );
+
+
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -92,30 +96,24 @@ alert("hello");
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-	     
-                  
-                          <div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="challan_type">Challan type</label>
-                    <div class="col-sm-10" name="challan_type">
-                       <?php echo $challan_type;?>
-                    </div>
-                  </div>
-                       
-                  <div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="location_from">Pickup ID</label>
-                    <div class="col-sm-10" name="location_from">
-                       <?php echo $location_from; ?>
-                    </div>
-                  </div>
-                    <div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="name">Delivery ID</label>
-                    <div class="col-sm-10" name="location_to">
-                       <?php echo $location_to;?>
-                    </div>
-                  </div>
+                         <blockquote>
+	          <strong>Challan type:
+	            </strong> <?php echo $challan_type;?>
+	          </blockquote>
+                <blockquote>
+	          <strong>From Location:
+	            </strong> <?php echo $location_from;?>
+	          </blockquote>
+                <blockquote>
+	          <strong>To Location:
+	            </strong> <?php echo $location_to;?>
+	          </blockquote>
+                 <blockquote>
+	          <strong>Job Order:
+	            </strong> <?php echo $job_order;?>
+	          </blockquote>
+                 
+                   
                        
                        
                          <div id="form_div">
@@ -142,6 +140,7 @@ alert("hello");
           </tbody>
   </table>
             <input type="hidden" name="from" value="<?php echo $location_from; ?>"/>
+            <input type="hidden" name="job_order" value="<?php echo $job_order; ?>"/>
             <input type="hidden" name="to" value="<?php echo $location_to; ?>"/>
             <input type="hidden" name="type" value="<?php echo $challan_type; ?>"/>
   <div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
